@@ -1,5 +1,6 @@
 import { useFetchGifs } from '../hooks/useFetchGifs';
-import { GifList } from './GifList'
+import { GifList } from './GifList';
+import { PropTypes } from "prop-types";
 
 export const GifGrid = ({category}) => {
 
@@ -8,15 +9,15 @@ export const GifGrid = ({category}) => {
     return (
         <div>
             <h3 key={category}>{category}</h3>
-            {
+            {/* {
                 isLoading 
                 ? ( <span><b>Loading...</b></span> )
                 : null
-            }
+            } */}
             {
                 isLoading && ( <span><b>Loading...</b></span> )
             }
-            <div className='flex-grid__container'>
+            <div className='flex-grid__container' data-testid="card-container">
                 {
                     gifs.map(gif => (
                         <GifList key={gif.id} {...gif} />
@@ -25,4 +26,8 @@ export const GifGrid = ({category}) => {
             </div>
         </div>
     )
+}
+
+GifGrid.propTypes = {
+    category: PropTypes.string.isRequired
 }

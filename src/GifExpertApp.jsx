@@ -6,8 +6,9 @@ export const GifExpertApp = () => {
   const [categories, setCategories] = useState([]);
 
   const onAddCategory = (newCategory) => {
-    if(categories.includes(newCategory)) return;
-    setCategories([newCategory, ...categories])
+    const lowerCaseNewCategory = newCategory.toLowerCase()
+    if(categories.includes(lowerCaseNewCategory)) return;
+    setCategories([lowerCaseNewCategory, ...categories])
   }
 
   return (
@@ -24,8 +25,6 @@ export const GifExpertApp = () => {
           <GifGrid key={category} category={category} />
         )
       }
-
-      {/* Targeta gif */}
     </>
   )
 }
